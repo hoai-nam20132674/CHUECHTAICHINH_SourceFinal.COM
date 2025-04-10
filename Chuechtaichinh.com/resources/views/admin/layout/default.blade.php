@@ -30,7 +30,7 @@
 
 
 
-    <title>Trang quản trị</title>
+    <title>Trang quản trị CHUECHTAICHINH</title>
 
 
 
