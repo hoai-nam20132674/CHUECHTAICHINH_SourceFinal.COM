@@ -30,9 +30,7 @@ use App\BCID;
 use App\PCID;
 use App\SCID;
 use App\Contact;
-use App\Kygui;
-use App\KyguiImage;
-use App\Yeucau;
+use App\Course;
 use App\Card;
 use App\Slider;
 use App\Order;
@@ -69,10 +67,11 @@ class Controller extends BaseController
         else{
             $locale = 'vi';
         }
-        // $system = System::where('id',1)->get()->first();
+        $system = System::where('id',1)->get()->first();
+        $courses = Course::where('highlight',1)->get();
         // $menus = Menu::whereNull('parent_id')->orderBy('stt','ASC')->get();
         // $slides = Slider::where('display',1)->orderBy('stt','ASC')->get();
-        return view('front-end.index');
+        return view('front-end.index',compact('system','courses'));
     }
     public function videos(Request $request){
         $system = System::where('id',1)->get()->first();

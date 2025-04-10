@@ -57,7 +57,7 @@
                         <div class="form-group"  >
     
                             <label for="href" class="control-label required">Dường dẫn</label>
-                            <input class="form-control" placeholder="Nhập link video" data-counter="120" name="video" type="file" required id="href">
+                            <input class="form-control" placeholder="Nhập link video" data-counter="120" name="href" type="text" required id="href">
                         </div>
 
                         <div class="form-group">

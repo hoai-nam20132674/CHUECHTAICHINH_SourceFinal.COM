@@ -75,6 +75,8 @@ use App\Blog;
 use App\Order;
 
 use App\Video;
+use App\Lesson;
+use App\Course;
 
 use App\System;
 
@@ -614,7 +616,189 @@ class HomeController extends Controller
 
     // end blog
 
+    // Course
+    public function courses(Request $request){
 
+        $courses = Course::select()->paginate(15);
+
+        return view('admin.courses',compact('courses','request'));
+
+    }
+
+    public function addCourse(Request $request){
+
+        return view('admin.addCourse',compact('request'));
+
+    }
+
+    public function postAddCourse(Request $request){
+
+        $item = new Course;
+
+        $item -> add($request);
+
+        return redirect()->route('courses')->with(['flash_level'=>'success','flash_message'=>'Thêm khóa học thành công']); 
+
+    }
+
+    public function editCourse($id){
+
+        $course = Course::where('id',$id)->get()->first();
+
+        return view('admin.editCourse',compact('course'));
+
+    }
+
+    public function postEditCourse(Request $request, $id){
+
+        $item = new Course;
+
+        $item->edit($request,$id);
+
+        return redirect()->route('editCourse',$id)->with(['flash_level'=>'success','flash_message'=>'Sửa thành công']);
+
+    }
+
+    public function deleteCourse($id){
+
+        $item = Course::where('id',$id)->get()->first();
+
+        $item->delete();
+
+        return redirect()->route('courses')->with(['flash_level'=>'success','flash_message'=>'Xóa khóa học thành công']); 
+
+    }
+
+    public function deleteCourses(Request $request){
+
+        if(Auth::user()->role == 1){
+
+            if(isset($request->courses_id)){
+
+                $str_ids = $request->courses_id;
+
+                $ids = array();
+
+                $ids = explode(",",$str_ids);
+
+                $count = count($ids);
+
+                for($j=0;$j<$count;$j++){
+
+                    $item = Course::where('id',$ids[$j])->get()->first();
+
+                    
+
+                    $item->delete();
+
+                }
+
+            }
+
+            return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Xóa thành công']);
+
+        }
+
+        else{
+
+            return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Bạn không có quyền xóa khóa học này']);
+
+        }
+
+    }
+    // End Course
+
+    // Lesson
+    public function lessons(Request $request){
+
+        $lessons = Lesson::select()->paginate(15);
+
+        return view('admin.lessons',compact('lessons','request'));
+
+    }
+
+    public function addLesson(Request $request){
+
+        return view('admin.addLesson',compact('request'));
+
+    }
+
+    public function postAddLesson(Request $request){
+
+        $item = new Lesson;
+
+        $item -> add($request);
+
+        return redirect()->route('lessons')->with(['flash_level'=>'success','flash_message'=>'Thêm bài giảng thành công']); 
+
+    }
+
+    public function editLesson($id){
+
+        $lesson = Lesson::where('id',$id)->get()->first();
+
+        return view('admin.editLesson',compact('lesson'));
+
+    }
+
+    public function postEditLesson(Request $request, $id){
+
+        $item = new Lesson;
+
+        $item->edit($request,$id);
+
+        return redirect()->route('editLesson',$id)->with(['flash_level'=>'success','flash_message'=>'Sửa thành công']);
+
+    }
+
+    public function deleteLesson($id){
+
+        $item = Lesson::where('id',$id)->get()->first();
+
+        $item->delete();
+
+        return redirect()->route('lessons')->with(['flash_level'=>'success','flash_message'=>'Xóa bài giảng thành công']); 
+
+    }
+
+    public function deleteLessons(Request $request){
+
+        if(Auth::user()->role == 1){
+
+            if(isset($request->lessons_id)){
+
+                $str_ids = $request->lessons_id;
+
+                $ids = array();
+
+                $ids = explode(",",$str_ids);
+
+                $count = count($ids);
+
+                for($j=0;$j<$count;$j++){
+
+                    $item = Lesson::where('id',$ids[$j])->get()->first();
+
+                    
+
+                    $item->delete();
+
+                }
+
+            }
+
+            return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Xóa thành công']);
+
+        }
+
+        else{
+
+            return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Bạn không có quyền xóa bài giảng này']);
+
+        }
+
+    }
+    // End Lesson
 
     // Video
 

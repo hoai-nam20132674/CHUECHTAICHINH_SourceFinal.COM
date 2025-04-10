@@ -12,9 +12,7 @@ class Video extends Model
 {
     //
     protected $table = 'videos';
-    public function courses(){
-        return $this->belongsToMany('App\Course','video_courses','video_id','course_id');
-    }
+    
     public function categories(){
         return $this->belongsToMany('App\VideoCate','vcids','video_id','cate_id');
     }
@@ -22,11 +20,7 @@ class Video extends Model
         $this->title = $request->title;
         $this->content = $request->content;
         $this->status = $request->status;
-        $file = $request->file('video');
-        $video_name = $file->getClientOriginalName();
-        $this->href = $request->video_name;
-        $video_path = public_path('uploads/images/videos/');
-        $file->move($video_path, $video_name); 
+        $this->href = $request->href;
         $file_name = $request->file('avata')->getClientOriginalName();
         $this->avata = $file_name;
         $path = public_path('uploads/images/videos/' . $file_name);

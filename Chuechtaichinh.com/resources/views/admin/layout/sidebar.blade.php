@@ -118,7 +118,7 @@
 
                             <i class="fa fa-cube"></i>
 
-                            <span class="title">Sản phẩm</span>
+                            <span class="title">Khóa học</span>
 
                             <span class="arrow "></span>
 
@@ -128,40 +128,15 @@
 
                             <li class="nav-item " id="cms-plugins-ecommerce-customer">
 
-                                <a href="{{URL::route('products')}}" class="nav-link">
+                                <a href="{{URL::route('courses')}}" class="nav-link">
 
                                     <i class="fa fa-cubes"></i>
 
-                                    Tất cả sản phẩm
+                                    Tất cả khóa học
 
                                 </a>
 
                             </li>
-
-                            <li class="nav-item " id="cms-plugins-product-categories">
-
-                                <a href="{{URL::route('productCategories')}}" class="nav-link">
-
-                                    <i class="fa fa-list"></i>
-
-                                    Danh mục sản phẩm
-
-                                </a>
-
-                            </li>
-
-                            <li class="nav-item " id="cms-plugins-product-categories">
-
-                                <a href="{{URL::route('properties')}}" class="nav-link">
-
-                                    <i class="fas fa-glass-martini"></i>
-
-                                    Thuộc tính sản phẩm
-
-                                </a>
-
-                            </li>
-
                             <li class="nav-item " id="cms-plugins-product-categories">
 
                                 <a href="{{URL::route('orders')}}" class="nav-link">
@@ -173,6 +148,39 @@
                                 </a>
 
                             </li>
+
+                            
+
+                        </ul>
+
+                    </li>
+                    <li class="nav-item " id="cms-plugins-ecommerce">
+
+                        <a href="#" class="nav-link nav-toggle">
+
+                            <i class="fa fa-camera"></i>
+
+                            <span class="title">Bài Giảng</span>
+
+                            <span class="arrow "></span>
+
+                        </a>
+
+                        <ul class="sub-menu  hidden-ul ">
+
+                            <li class="nav-item " id="cms-plugins-ecommerce-customer">
+
+                                <a href="{{URL::route('lessons')}}" class="nav-link">
+
+                                    <i class="fa fa-cubes"></i>
+
+                                    Danh sách bài giảng
+
+                                </a>
+
+                            </li>
+
+                            
 
                             
 

@@ -112,7 +112,37 @@ Route::get('admin/blog/categorie/deleteBlogCategories', 'HomeController@deleteBl
 
 // end blog route
 
+// Lesson route
+Route::get('admin/lessons', 'HomeController@lessons')->name('lessons');
 
+Route::get('admin/lesson/add', 'HomeController@addLesson')->name('addLesson');
+
+Route::post('admin/lesson/add', 'HomeController@postAddLesson')->name('postAddLesson');
+
+Route::get('admin/lesson/edit/{id}', 'HomeController@editLesson')->name('editLesson');
+
+Route::post('admin/lesson/edit/{id}', 'HomeController@postEditLesson')->name('postEditLesson');
+
+Route::get('admin/lesson/delete/{id}', 'HomeController@deleteLesson')->name('deleteLesson');
+
+Route::get('admin/lesson/deleteLessons', 'HomeController@deleteLessons')->name('deleteLessons');
+// End Lesson
+
+// Course route
+Route::get('admin/courses', 'HomeController@courses')->name('courses');
+
+Route::get('admin/course/add', 'HomeController@addCourse')->name('addCourse');
+
+Route::post('admin/course/add', 'HomeController@postAddCourse')->name('postAddCourse');
+
+Route::get('admin/course/edit/{id}', 'HomeController@editCourse')->name('editCourse');
+
+Route::post('admin/course/edit/{id}', 'HomeController@postEditCourse')->name('postEditCourse');
+
+Route::get('admin/course/delete/{id}', 'HomeController@deleteCourse')->name('deleteCourse');
+
+Route::get('admin/course/deleteCourses', 'HomeController@deleteCourses')->name('deleteCourses');
+// End Course
 
 // video route
 

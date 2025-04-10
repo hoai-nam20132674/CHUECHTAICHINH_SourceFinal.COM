@@ -8,7 +8,7 @@ class Course extends Model
 {
     //
     protected $table = 'courses';
-    public function videos(){
-        return $this->belongsToMany('App\Video','video_courses','course_id','video_id');
+    public function lessons(){
+        return $this->belongsToMany('App\Lesson','lesson_courses','course_id','lesson_id');
     }
 }
